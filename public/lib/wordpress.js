@@ -124,12 +124,11 @@
 				}
 
 				if (data.user && data.user.uid) {
-					var error = window.location.href.match(/error=[\w-]*/);
-					if (error) {
-						error = error[0].split('=')[1];
-						if (error === 'too-many-posts') {
+					var error = window.location.search.indexOf('error=') > -1;
+    				if (error) {
+						if (window.location.search.indexOf('too-many-posts') > -1) {
 							error = 'Please wait before posting so soon.';
-						} else if (error === 'content-too-short') {
+						} else if (window.location.search.indexOf('content-too-short') > -1) {
 							error = 'Please post a longer reply.';
 						}
 
